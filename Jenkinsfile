@@ -3,7 +3,7 @@ node {
     def dockerImageTag = "springboot-deploy${env.BUILD_NUMBER}"
 
     try{
-         notifyBuild('STARTED')
+//          notifyBuild('STARTED')
          stage('Clone Repo') {
             // for display purposes
             // Get some code from a GitHub repository
@@ -21,10 +21,10 @@ node {
                   sh "docker run --name springboot-deploy -d -p 8081:8081 springboot-deploy:${env.BUILD_NUMBER}"
           }
     }catch(e){
-        currentBuild.result = "FAILED"
+//         currentBuild.result = "FAILED"
         throw e
     }finally{
-        notifyBuild(currentBuild.result)
+//         notifyBuild(currentBuild.result)
     }
 }
 
